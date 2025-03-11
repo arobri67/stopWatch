@@ -4,10 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>⏲︎ A much better Stopwatch ⏲︎</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="stopwatch-display">00:00:00.000</div>
+      <div class="stopwatch-controls">
+        <button id="lap-reset">Lap</button>
+        <button id="start-stop">Start</button>
+      </div>
+      <ul class="laps-list"><ul/>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
