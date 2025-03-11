@@ -1,0 +1,26 @@
+{
+  "name": "stopwatch",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint --fix"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.8.1",
+    "eslint": "^9.22.0",
+    "eslint-plugin-format": "^1.0.1",
+    "vite": "^6.2.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
