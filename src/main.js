@@ -56,10 +56,9 @@ function lapRecorder() {
   laps.length === 0 ? previousLap = initialTime : previousLap = laps[laps.length - 1].absoluteLapTime;
   lapCounter++;
   const currentTime = performance.now();
-  const lapTime = currentTime - previousLap
+  const lapTime = currentTime - previousLap;
   const totalTime = currentTime - initialTime;
 
-console.log(previousLap)
   laps.push({
     number: lapCounter,
     absoluteLapTime: currentTime,
@@ -82,15 +81,14 @@ function renderLapTime() {
 
   const lapNumber = document.createElement("span");
   lapNumber.textContent = `Lap ${currentLap.number}`;
-  lapNumber.style.marginInlineEnd = "10px"
+  lapNumber.style.marginInlineEnd = "10px";
 
   const lapTime = document.createElement("span");
   lapTime.textContent = currentLap.laptime;
-  lapTime.style.marginInlineEnd = "10px"
+  lapTime.style.marginInlineEnd = "10px";
 
   const totalTime = document.createElement("span");
   totalTime.textContent = currentLap.total;
- 
 
   lapItem.append(deleteButton);
   lapItem.append(lapNumber);
