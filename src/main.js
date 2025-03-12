@@ -6,6 +6,7 @@ let timerInterval;
 
 let laps = [];
 let lapCounter = 0;
+let previousLap;
 
 const display = document.querySelector(".stopwatch-display");
 
@@ -44,7 +45,7 @@ function resetAll() {
   clearInterval(timerInterval);
   timerInterval = null;
   elapsedTime = 0;
-  display.textContent = "00:00:00.00";
+  display.textContent = timeFormater(0);
 
   laps = [];
   lapCounter = 0;
@@ -52,12 +53,17 @@ function resetAll() {
 }
 
 function lapRecorder() {
+  laps.length === 0 ? previousLap = initialTime : previousLap = laps[laps.length - 1].absoluteLapTime;
   lapCounter++;
   const currentTime = performance.now();
+  const lapTime = currentTime - previousLap
   const totalTime = currentTime - initialTime;
 
+console.log(previousLap)
   laps.push({
     number: lapCounter,
+    absoluteLapTime: currentTime,
+    laptime: timeFormater(lapTime),
     total: timeFormater(totalTime),
   });
 }
@@ -76,13 +82,20 @@ function renderLapTime() {
 
   const lapNumber = document.createElement("span");
   lapNumber.textContent = `Lap ${currentLap.number}`;
+  lapNumber.style.marginInlineEnd = "10px"
 
   const lapTime = document.createElement("span");
-  lapTime.textContent = currentLap.total;
+  lapTime.textContent = currentLap.laptime;
+  lapTime.style.marginInlineEnd = "10px"
+
+  const totalTime = document.createElement("span");
+  totalTime.textContent = currentLap.total;
+ 
 
   lapItem.append(deleteButton);
   lapItem.append(lapNumber);
   lapItem.append(lapTime);
+  lapItem.append(totalTime);
   lapsList.insertBefore(lapItem, lapsList.firstChild);
 }
 

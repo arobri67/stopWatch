@@ -16,3 +16,14 @@
 ul {
   list-style: none;
 }
+
+body {
+  height: 100svh;
+ 
+}
+
+.stopwatch-display {
+  font-size: 10rem;
+  padding: 2rem;
+  width: 50svh;
+}
