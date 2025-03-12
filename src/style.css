@@ -114,3 +114,9 @@ li > span {
 .total {
   font-family: monospace;
 }
+
+@media (max-width: 420px) {
+  .stopwatch-display {
+    font-size: 50px;
+  }
+}
