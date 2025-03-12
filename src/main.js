@@ -18,6 +18,7 @@ const lapsList = document.querySelector(".laps-list");
 function startStop() {
   if (timerInterval) {
     startAndStopBtn.textContent = "Start";
+    startAndStopBtn.style.backgroundColor = "rgba(21, 128, 61, 0.7)";
     lapAndResetBtn.textContent = "Reset";
     clearInterval(timerInterval);
     timerInterval = null;
@@ -27,7 +28,10 @@ function startStop() {
     initialTime = performance.now();
     timerInterval = setInterval(updateTime, 1);
     startAndStopBtn.textContent = "Stop";
+    startAndStopBtn.style.backgroundColor = "rgba(239, 68, 68, .7)";
     lapAndResetBtn.textContent = "Lap";
+    lapAndResetBtn.style.color = "rgba(255, 255, 255, 0.8)";
+    lapAndResetBtn.style.cursor = "pointer";
   }
 }
 
@@ -55,6 +59,11 @@ function resetAll() {
 
   laps = [];
   lapCounter = 0;
+  // lapsList.innerHTML = `<li>
+  //           <span class="lap-title">Lap No.</span>
+  //           <span class="lap-title">Split</span>
+  //           <span class="lap-title">Total</span>
+  //         </li>`;
   lapsList.innerHTML = "";
 }
 
@@ -77,30 +86,31 @@ function renderLapTime() {
   const currentLap = laps[laps.length - 1];
 
   const lapItem = document.createElement("li");
-  lapItem.className = "lap-item";
+  lapItem.classList.add("lap-item");
   lapItem.id = `lap${currentLap.number}`;
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "X";
-  deleteButton.className = "delete-lap";
+  deleteButton.classList.add("delete-lap");
   deleteButton.addEventListener("click", () => removeLap(currentLap.number));
 
   const lapNumber = document.createElement("span");
   lapNumber.textContent = `Lap ${currentLap.number}`;
-  lapNumber.style.marginInlineEnd = "10px";
+  lapNumber.classList.add("lap-number");
 
   const lapTime = document.createElement("span");
   lapTime.textContent = currentLap.laptime;
-  lapTime.style.marginInlineEnd = "10px";
+  lapTime.classList.add("split");
 
   const totalTime = document.createElement("span");
   totalTime.textContent = currentLap.total;
+  totalTime.classList.add("total");
 
-  lapItem.append(deleteButton);
   lapItem.append(lapNumber);
+  lapNumber.append(deleteButton);
   lapItem.append(lapTime);
   lapItem.append(totalTime);
-  lapsList.insertBefore(lapItem, lapsList.firstChild);
+  lapsList.append(lapItem);
 }
 
 function removeLap(number) {

@@ -1,29 +1,116 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+* {
+  font-family: Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-ul {
-  list-style: none;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(36, 36, 36, 1);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   height: 100svh;
- 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  width: 600px;
 }
 
 .stopwatch-display {
-  font-size: 10rem;
-  padding: 2rem;
-  width: 50svh;
+  font-size: 70px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: monospace;
+}
+
+.stopwatch-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-inline: 50px;
+}
+
+.control-btn {
+  font-size: 16px;
+  padding: 10px 20px;
+  cursor: not-allowed;
+  border: none;
+  border-radius: 200px;
+  width: 150px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#start-stop {
+  background-color: rgba(21, 128, 61, 0.7);
+  cursor: pointer;
+}
+
+#lap-reset {
+  background-color: rgba(55, 65, 81, 0.7);
+  color: rgba(75, 85, 99, 1);
+}
+
+ul {
+  list-style: none;
+  height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid;
+  border-color: rgba(75, 85, 99, 0.8);
+  padding-block: 0.5rem;
+}
+li > span {
+  width: 110px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid;
+  border-color: rgba(75, 85, 99, 0.8);
+  padding-block: 0.5rem;
+}
+
+.title-container > span {
+  width: 110px;
+  text-align: center;
+}
+
+.lap-title {
+  color: rgba(255, 255, 255, 0.309);
+}
+
+.delete-lap {
+  background-color: rgba(36, 36, 36, 1);
+  border: none;
+  color: rgba(235, 8, 8, 0.8);
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.lap-number {
+  font-weight: 700;
+}
+
+.split {
+  font-family: monospace;
+}
+
+.total {
+  font-family: monospace;
 }

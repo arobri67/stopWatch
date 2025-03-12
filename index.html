@@ -10,10 +10,17 @@
     <div id="app">
       <div class="stopwatch-display">00:00:00.000</div>
       <div class="stopwatch-controls">
-        <button id="lap-reset">Lap</button>
-        <button id="start-stop">Start</button>
+        <button class="control-btn" id="lap-reset">Lap</button>
+        <button class="control-btn" id="start-stop">Start</button>
       </div>
-      <ul class="laps-list"></ul>
+      <div class="laps-container">
+        <div class="title-container">
+          <span class="lap-title">Lap No.</span>
+          <span class="lap-title">Split</span>
+          <span class="lap-title">Total</span>
+        </div>
+        <ul class="laps-list"></ul>
+      </div>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>
