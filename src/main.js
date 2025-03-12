@@ -59,11 +59,6 @@ function resetAll() {
 
   laps = [];
   lapCounter = 0;
-  // lapsList.innerHTML = `<li>
-  //           <span class="lap-title">Lap No.</span>
-  //           <span class="lap-title">Split</span>
-  //           <span class="lap-title">Total</span>
-  //         </li>`;
   lapsList.innerHTML = "";
 }
 
