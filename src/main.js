@@ -31,6 +31,12 @@ function startStop() {
   }
 }
 
+function updateTime() {
+  const currentTime = performance.now();
+  const totalTimeElapsed = elapsedTime + (currentTime - initialTime);
+  display.textContent = timeFormater(totalTimeElapsed);
+}
+
 function lapReset() {
   if (timerInterval) {
     lapRecorder();
@@ -100,12 +106,6 @@ function renderLapTime() {
 function removeLap(number) {
   const itemToDelete = document.getElementById(`lap${number}`);
   itemToDelete.remove();
-}
-
-function updateTime() {
-  const currentTime = performance.now();
-  const totalTimeElapsed = elapsedTime + (currentTime - initialTime);
-  display.textContent = timeFormater(totalTimeElapsed);
 }
 
 function timeFormater(t) {
