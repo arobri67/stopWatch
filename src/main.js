@@ -8,6 +8,7 @@ let laps = [];
 let lapCounter = 0;
 
 const display = document.querySelector(".stopwatch-display");
+
 const startAndStopBtn = document.getElementById("start-stop");
 const lapAndResetBtn = document.getElementById("lap-reset");
 
@@ -32,8 +33,7 @@ function startStop() {
 function lapReset() {
   if (timerInterval) {
     lapRecorder();
-    const deleteLapBtn = document.querySelector(".delete-lap");
-    deleteLapBtn.addEventListener("click", removeLap);
+    renderLapTime();
   }
   else {
     resetAll();
@@ -51,40 +51,44 @@ function resetAll() {
   lapsList.innerHTML = "";
 }
 
-function removeLap() {
-  const parent = document.parentElement;
-  console.log(parent);
-}
-
 function lapRecorder() {
   lapCounter++;
   const currentTime = performance.now();
   const totalTime = currentTime - initialTime;
+
   laps.push({
     number: lapCounter,
     total: timeFormater(totalTime),
   });
+}
+
+function renderLapTime() {
+  const currentLap = laps[laps.length - 1];
 
   const lapItem = document.createElement("li");
   lapItem.className = "lap-item";
-  lapItem.id = `lap${lapCounter}`;
+  lapItem.id = `lap${currentLap.number}`;
+
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "X";
   deleteButton.className = "delete-lap";
-  const lapNumber = document.createElement("span");
-  lapNumber.textContent = `Lap ${lapCounter}`;
-  const lapTime = document.createElement("span");
-  lapTime.textContent = `${timeFormater(totalTime)}`;
+  deleteButton.addEventListener("click", () => removeLap(currentLap.number));
 
-  // lapItem.innerHTML = `
-  // <button>X</button>
-  // <span class="lap-number">Lap ${lapCounter}</span>
-  // <span class="lap-time">${timeFormater(totalTime)}</span>
-  //  `;
+  const lapNumber = document.createElement("span");
+  lapNumber.textContent = `Lap ${currentLap.number}`;
+
+  const lapTime = document.createElement("span");
+  lapTime.textContent = currentLap.total;
+
   lapItem.append(deleteButton);
   lapItem.append(lapNumber);
   lapItem.append(lapTime);
   lapsList.insertBefore(lapItem, lapsList.firstChild);
+}
+
+function removeLap(number) {
+  const itemToDelete = document.getElementById(`lap${number}`);
+  itemToDelete.remove();
 }
 
 function updateTime() {
